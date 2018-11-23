@@ -59,7 +59,10 @@ public class Main {
             System.exit(1);
         }
 
-
+        //Just in case there are more the arraylist is the wrong size, let's save some memory
+        if(stateList != null)
+            stateList.trimToSize();
+        
         return stateList;
     }
 

@@ -18,3 +18,5 @@ did a minor shuffle of the state names as they originally appeared in the data.
 Frankly, this project is probably not the best example of anything.  Please feel free to add issues if you you have
 suggestions for improvement.  Please keep in mind that the project is only here to give 
 simple illustrations of XML and ArrayLists.
+
+This demo doesn't really explore much about JSoup itself.  It is just included as a dependency in the pom.xml file.
