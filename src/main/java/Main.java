@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.function.Predicate;
 
 public class Main {
     final static String urlString = "https://raw.githubusercontent.com/CivilServiceUSA/us-states/master/data/states.xml";
@@ -22,8 +23,12 @@ public class Main {
         Collections.sort(list);
         print(list);
 
+        doWeirdStuffWithList(list);
+
         System.out.println("Done.");
     }
+
+
 
     public static ArrayList<State> readStates(String url) {
         ArrayList<State> stateList = new ArrayList<>(50);
@@ -62,7 +67,7 @@ public class Main {
         //Just in case there are more the arraylist is the wrong size, let's save some memory
         if(stateList != null)
             stateList.trimToSize();
-        
+
         return stateList;
     }
 
@@ -73,5 +78,18 @@ public class Main {
         }
     }
 
+    private static void doWeirdStuffWithList(ArrayList<State> list) {
+        //We want to remove all states that contain the letter "e"
+
+        list.removeIf(containsLetter('e'));
+        System.out.println("\nNo states with an e in their name:");
+        print(list);
+
+
+    }
+    public static Predicate<State> containsLetter(char ch)
+    {
+        return p -> p.getName().contains(Character.toString(ch));
+    }
 
 }

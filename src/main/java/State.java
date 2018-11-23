@@ -19,4 +19,8 @@ public class State implements Comparable<State>{
     public int compareTo(State o) {
         return name.compareToIgnoreCase(o.name);
     }
+
+    public String getName(){
+        return name;
+    }
 }
