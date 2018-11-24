@@ -9,11 +9,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Main {
-    final static String urlString = "https://raw.githubusercontent.com/CivilServiceUSA/us-states/master/data/states.xml";
 
+    /*
+      Data is adapted from:
+      https://github.com/CivilServiceUSA/us-states/tree/master/data
+
+      The following changes were made.
+         * <state> appeared at two different levels.  In order to simplify the extraction, I changed the inner <state>
+           tag to <stateName>
+         * The states appeared in alphabetic order.  I wanted to demonstrate sorting, so I suffled the list a little
+           so it did not appear to be sorted in the original data.
+    */
     public static void main(String[] args) {
 
-        ArrayList<State> list = readStates(urlString);
+        ArrayList<State> list = readStates();
 
         System.out.println("Original List: ");
         print(list);
@@ -25,7 +34,7 @@ public class Main {
         System.out.println("Done.");
     }
 
-    public static ArrayList<State> readStates(String url) {
+    public static ArrayList<State> readStates() {
         ArrayList<State> stateList = new ArrayList<>(50);
 
         try {
@@ -55,7 +64,7 @@ public class Main {
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Could not open " + url);
+            System.err.println("Could not open input file");
             System.exit(1);
         }
 
